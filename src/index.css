@@ -76,3 +76,9 @@ body {
     font-weight: 600;
     text-align: right;
 }
+
+@media screen and (max-width: 380px) {
+    .CurrentWeather {
+        width: 87%;
+    }
+}

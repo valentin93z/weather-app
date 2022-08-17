@@ -20,6 +20,51 @@ import iconunknown from '../icons/unknown.png';
 
 function CurrentWeather({data}) {
 
+    const imageCustom = (icon) => {
+        switch (icon) {
+            case '01d':
+                return icon01d;
+            case '01n':
+                return icon01n;
+            case '02d':
+                return icon02d;
+            case '02n':
+                return icon02n;
+            case '03d':
+                return icon03d;
+            case '03n':
+                return icon03n;
+            case '04d':
+                return icon04d;
+            case '04n':
+                return icon04n;
+            case '09d':
+                return icon09d;
+            case '09n':
+                return icon09n;
+            case '10d':
+                return icon10d;
+            case '10n':
+                return icon10n;
+            case '11d':
+                return icon11d;
+            case '11n':
+                return icon11n;
+            case '13d':
+                return icon13d;
+            case '13n':
+                return icon13n;
+            case '50d':
+                return icon50d;
+            case '50n':
+                return icon50n;
+            case 'unknown':
+                return iconunknown;
+            default:
+                console.log(icon, 'icon not found');
+        }
+    }
+
     return (
         <div className='CurrentWeather'>
             <div className="top">
@@ -27,29 +72,29 @@ function CurrentWeather({data}) {
                     <p className="city">{data.city}</p>
                     <p className="weather-description">{data.weather[0].description}</p>
                 </div>
-                <img className="weather-icon" alt="weather-icon" src={`icon${data.weather[0].icon}`} />
+                <img className="weather-icon" alt="weather-icon" src={imageCustom(data.weather[0].icon)} />
             </div>
             <div className='bottom'>
-                <p className='temperature'>18&deg;C</p>
+                <p className='temperature'>{Math.round(data.main.temp)}&deg;C</p>
                 <div className='details'>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Details</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Feels like</span>
-                        <span className='parameter-value'>22&deg;C</span>
+                        <span className='parameter-value'>{Math.round(data.main.feels_like)}&deg;C</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Wind</span>
-                        <span className='parameter-value'>2 m/s</span>
+                        <span className='parameter-value'>{data.wind.speed} m/s</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Humidity</span>
-                        <span className='parameter-value'>15%</span>
+                        <span className='parameter-value'>{data.main.humidity}%</span>
                     </div>
                     <div className='parameter-row'>
                         <span className='parameter-label'>Pressure</span>
-                        <span className='parameter-value'>15 hPa</span>
+                        <span className='parameter-value'>{data.main.pressure} hPa</span>
                     </div>
                 </div>
             </div>
