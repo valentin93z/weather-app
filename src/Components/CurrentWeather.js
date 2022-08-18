@@ -18,53 +18,53 @@ import icon50d from '../icons/50d.png';
 import icon50n from '../icons/50n.png';
 import iconunknown from '../icons/unknown.png';
 
-function CurrentWeather({data}) {
 
-    const imageCustom = (icon) => {
-        switch (icon) {
-            case '01d':
-                return icon01d;
-            case '01n':
-                return icon01n;
-            case '02d':
-                return icon02d;
-            case '02n':
-                return icon02n;
-            case '03d':
-                return icon03d;
-            case '03n':
-                return icon03n;
-            case '04d':
-                return icon04d;
-            case '04n':
-                return icon04n;
-            case '09d':
-                return icon09d;
-            case '09n':
-                return icon09n;
-            case '10d':
-                return icon10d;
-            case '10n':
-                return icon10n;
-            case '11d':
-                return icon11d;
-            case '11n':
-                return icon11n;
-            case '13d':
-                return icon13d;
-            case '13n':
-                return icon13n;
-            case '50d':
-                return icon50d;
-            case '50n':
-                return icon50n;
-            case 'unknown':
-                return iconunknown;
-            default:
-                console.log(icon, 'icon not found');
-        }
+export const imageCustom = (icon) => {
+    switch (icon) {
+        case '01d':
+            return icon01d;
+        case '01n':
+            return icon01n;
+        case '02d':
+            return icon02d;
+        case '02n':
+            return icon02n;
+        case '03d':
+            return icon03d;
+        case '03n':
+            return icon03n;
+        case '04d':
+            return icon04d;
+        case '04n':
+            return icon04n;
+        case '09d':
+            return icon09d;
+        case '09n':
+            return icon09n;
+        case '10d':
+            return icon10d;
+        case '10n':
+            return icon10n;
+        case '11d':
+            return icon11d;
+        case '11n':
+            return icon11n;
+        case '13d':
+            return icon13d;
+        case '13n':
+            return icon13n;
+        case '50d':
+            return icon50d;
+        case '50n':
+            return icon50n;
+        case 'unknown':
+            return iconunknown;
+        default:
+            console.log(icon, 'icon not found');
     }
+}
 
+function CurrentWeather({data}) {
     return (
         <div className='CurrentWeather'>
             <div className="top">
