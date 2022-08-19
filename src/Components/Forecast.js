@@ -36,7 +36,34 @@ function Forecast({data}) {
     const currentTime = data.list[0].dt_txt.split(/\D/)[3];
     const for5days = (arr) => arr.filter((item) => item.dt_txt.split(/\D/)[3] === currentTime);
 
-    // console.log(for5days(data.list).slice(1));
+    const windDirection = (deg) => {
+        if (deg >= 337.5 || deg < 22.5) {
+            return 'North';
+        }
+        else if(deg >= 22.5 && deg < 67.5) {
+            return 'NorthEast'
+        }
+        else if(deg >= 67.5 && deg < 112.5) {
+            return 'East'
+        }
+        else if(deg >= 112.5 && deg < 175.5) {
+            return 'SouthEast'
+        }
+        else if(deg >= 175.5 && deg < 202.5) {
+            return 'South'
+        }
+        else if(deg >= 202.5 && deg < 247.5) {
+            return 'SouthWest'
+        }
+        else if(deg >= 247.5 && deg < 292.5) {
+            return 'West'
+        }
+        else if(deg >= 292.5 && deg < 337.5) {
+            return 'NorthWest'
+        }
+    }
+
+    console.log(for5days(data.list).slice(1));
 
     return (
         <div className="Forecast">
@@ -51,12 +78,20 @@ function Forecast({data}) {
                                     <img className='icon-small' alt='weather' src={imageCustom(item.weather[0].icon)} />
                                     <label className='day'>{forecastDays[idx]}</label>
                                     <label className='description'>{item.weather[0].description}</label>
-                                    <label className='min-max'>{Math.round(item.main.temp_min)}&deg;C / {Math.round(item.main.temp_max)}&deg;C</label>
+                                    <label className='temp'>{Math.round(item.main.temp)}&deg;C</label>
                                 </div>
                             </AccordionItemButton>
                         </AccordionItemHeading>
                         <AccordionItemPanel>
                             <div className='daily-details-grid'>
+                                <div className='daily-details-grid-item'>
+                                    <label>Feels like:</label>
+                                    <label>{Math.round(item.main.feels_like)}&deg;C</label>
+                                </div>
+                                <div className='daily-details-grid-item'>
+                                    <label>Clouds:</label>
+                                    <label>{item.clouds.all}%</label>
+                                </div>
                                 <div className='daily-details-grid-item'>
                                     <label>Pressure:</label>
                                     <label>{item.main.pressure} hPa</label>
@@ -66,20 +101,13 @@ function Forecast({data}) {
                                     <label>{item.main.humidity}%</label>
                                 </div>
                                 <div className='daily-details-grid-item'>
-                                    <label>Clouds:</label>
-                                    <label>{item.clouds.all}%</label>
-                                </div>
-                                <div className='daily-details-grid-item'>
                                     <label>Wind speed:</label>
                                     <label>{item.wind.speed} m/s</label>
                                 </div>
+
                                 <div className='daily-details-grid-item'>
-                                    <label>Sea level:</label>
-                                    <label>{item.main.sea_level} m</label>
-                                </div>
-                                <div className='daily-details-grid-item'>
-                                    <label>Feels like:</label>
-                                    <label>{Math.round(item.main.feels_like)}&deg;C</label>
+                                    <label>Wind direction:</label>
+                                    <label>{windDirection(item.wind.deg)}</label>
                                 </div>
                             </div>
                         </AccordionItemPanel>
