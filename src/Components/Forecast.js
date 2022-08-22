@@ -63,8 +63,6 @@ function Forecast({data}) {
         }
     }
 
-    // console.log(for5days(data.list).slice(1));
-
     return (
         <div className="Forecast">
             <label className="title">Daily</label>
@@ -104,7 +102,6 @@ function Forecast({data}) {
                                     <label>Wind speed:</label>
                                     <label>{item.wind.speed} m/s</label>
                                 </div>
-
                                 <div className='daily-details-grid-item'>
                                     <label>Wind direction:</label>
                                     <label>{windDirection(item.wind.deg)}</label>
