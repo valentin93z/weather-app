@@ -63,7 +63,7 @@ function Forecast({data}) {
         }
     }
 
-    console.log(for5days(data.list).slice(1));
+    // console.log(for5days(data.list).slice(1));
 
     return (
         <div className="Forecast">
